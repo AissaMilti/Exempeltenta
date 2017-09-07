@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Exempeltenta.Data;
 using Exempeltenta.Models;
 using Exempeltenta.Services;
+using Microsoft.Extensions.Logging;
 
 namespace Exempeltenta
 {

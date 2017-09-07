@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Exempeltenta.Data;
 using Exempeltenta.Models;
+using Microsoft.Extensions.Logging;
 
 namespace Exempeltenta.Controllers
 {
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<ProductsController> _logger;
 
-        public ProductsController(ApplicationDbContext context)
+        public ProductsController(ApplicationDbContext context, ILogger<ProductsController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         //public IActionResult Products()
@@ -29,6 +32,8 @@ namespace Exempeltenta.Controllers
         // GET: Products
         public IActionResult Index()
         {
+            _logger.LogWarning("With great powers comes great responsibilities");
+
             var products = _context.Products.ToList();
 
             return View( products);
