@@ -9,5 +9,7 @@ namespace Exempeltenta.Models
     {
         public int ProductCategoryId { get; set; }
         public string Name { get; set; }
+
+        public List<Product> Products { get; set; }
     }
 }
