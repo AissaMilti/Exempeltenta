@@ -1,4 +1,5 @@
 ﻿@model Exempeltenta.Models.Product
+@inject Exempeltenta.Services.ProductService _ProductService
 
 @{
     ViewData["Title"] = "Create";
@@ -12,6 +13,14 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <select class="form-control" name="ProductCategoryId">
+                @foreach (var i in _ProductService.GetAllCategories())
+                {
+                    <option value="@i.ProductCategoryId">@i.Name</option>
+                }
+
+            </select>
+
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />

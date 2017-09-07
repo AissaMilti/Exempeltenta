@@ -38,6 +38,7 @@ namespace Exempeltenta
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<ProductService>();
 
             services.AddDistributedMemoryCache();
 

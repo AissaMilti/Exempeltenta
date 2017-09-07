@@ -1,4 +1,6 @@
-﻿@model Exempeltenta.Models.Product
+﻿
+@model Exempeltenta.Models.Product
+@inject Exempeltenta.Services.ProductService  _ProductService
 
 @{
     ViewData["Title"] = "Edit";
@@ -10,21 +12,32 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
+        
+     
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ProductId" />
+            <input type="hidden" asp-for="ProductId"/>
+            
+            <select class="form-control" name="ProductCategoryId">
+                @foreach (var i in _ProductService.GetAllCategories())
+                {
+                    <option value="@i.ProductCategoryId">@i.Name</option>
+                }
+
+            </select>
+
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <input asp-for="Name" class="form-control"/>
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
+                <input asp-for="Price" class="form-control"/>
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default"/>
             </div>
         </form>
     </div>
