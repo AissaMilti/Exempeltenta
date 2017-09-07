@@ -19,10 +19,19 @@ namespace Exempeltenta.Controllers
             _context = context;
         }
 
+        //public IActionResult Products()
+        //{
+        //    var products = _context.ProductCategories.Include(x => x.Products);
+
+        //    return View(products);
+        //}
+
         // GET: Products
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Products.ToListAsync());
+            var products = _context.Products.ToList();
+
+            return View( products);
         }
 
         // GET: Products/Details/5

@@ -1,0 +1,16 @@
+﻿@model Microsoft.EntityFrameworkCore.Query.IIncludableQueryable<ProductCategory, List<Product>>
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>View</h2>
+
+@foreach (var i in Model)
+{
+    @i.Name
+    foreach (var f in i.Products)
+     {
+         @f.Price
+     }
+
+}
